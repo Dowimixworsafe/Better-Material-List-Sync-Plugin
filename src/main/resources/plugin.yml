@@ -1,7 +1,7 @@
-name: BML-Integration
-version: '1.0.0'
-main: pl.dowimixworsafe.bmlintegration.BMLIntegration
+name: BetterList-Integration
+version: '1.1.0'
+main: pl.dowimixworsafe.betterlistintegration.BetterListIntegration
 api-version: '26.1.2'
 author: Dowimixworsafe
-description: Server-side relay for the Better Material List mod's party progress sync.
+description: Server-side relay for the Better List for Litematica mod's party progress sync.
 website: https://github.com/Dowimixworsafe/Better-Material-List

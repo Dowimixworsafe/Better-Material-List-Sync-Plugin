@@ -1,4 +1,4 @@
-package pl.dowimixworsafe.bmlintegration;
+package pl.dowimixworsafe.betterlistintegration;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -15,19 +15,19 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BmlPluginMessageListener implements PluginMessageListener {
+public class BetterListPluginMessageListener implements PluginMessageListener {
 
     private final PartyManager partyManager;
     private final Logger logger;
 
-    public BmlPluginMessageListener(PartyManager partyManager, Logger logger) {
+    public BetterListPluginMessageListener(PartyManager partyManager, Logger logger) {
         this.partyManager = partyManager;
         this.logger = logger;
     }
 
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        if (!channel.equals("bml:sync")) return;
+        if (!channel.equals("betterlist:sync")) return;
 
         try {
             String jsonString;
@@ -56,7 +56,7 @@ public class BmlPluginMessageListener implements PluginMessageListener {
                 JsonObject ack = new JsonObject();
                 ack.addProperty("type", "BML_HELLO_ACK");
                 ack.addProperty("version", "2");
-                partyManager.sendPacket(player, "bml:sync", ack);
+                partyManager.sendPacket(player, "betterlist:sync", ack);
                 return;
             }
 
@@ -67,7 +67,7 @@ public class BmlPluginMessageListener implements PluginMessageListener {
             }
 
         } catch (Exception e) {
-            logger.log(Level.WARNING, "[BML] Failed to handle a bml:sync message: " + e.getMessage());
+            logger.log(Level.WARNING, "[BetterList] Failed to handle a betterlist:sync message: " + e.getMessage());
         }
     }
 
@@ -153,8 +153,8 @@ public class BmlPluginMessageListener implements PluginMessageListener {
         invitePkt.addProperty("partyId", partyId.toString());
         invitePkt.addProperty("fromNick", sender.getName());
 
-        partyManager.sendPacket(targetPlayer, "bml:sync", invitePkt);
-        sender.sendMessage("§a[BML] Invite sent to " + targetPlayer.getName());
+        partyManager.sendPacket(targetPlayer, "betterlist:sync", invitePkt);
+        sender.sendMessage("§a[BetterList] Invite sent to " + targetPlayer.getName());
     }
 
     private void handleAccept(Player acceptingPlayer, JsonObject json) {
@@ -195,7 +195,7 @@ public class BmlPluginMessageListener implements PluginMessageListener {
                 JsonObject leaveAck = new JsonObject();
                 leaveAck.addProperty("type", "PARTY_LEAVE");
                 leaveAck.addProperty("partyId", partyId.toString());
-                partyManager.sendPacket(leavingPlayer, "bml:sync", leaveAck);
+                partyManager.sendPacket(leavingPlayer, "betterlist:sync", leaveAck);
                 partyManager.broadcastPartyUpdate(partyId);
             }
         }
@@ -218,8 +218,8 @@ public class BmlPluginMessageListener implements PluginMessageListener {
             JsonObject kickPkt = new JsonObject();
             kickPkt.addProperty("type", "PARTY_LEAVE");
             kickPkt.addProperty("partyId", partyId.toString());
-            partyManager.sendPacket(targetPlayer, "bml:sync", kickPkt);
-            targetPlayer.sendMessage("§c[BML] You were kicked from the party.");
+            partyManager.sendPacket(targetPlayer, "betterlist:sync", kickPkt);
+            targetPlayer.sendMessage("§c[BetterList] You were kicked from the party.");
 
             partyManager.broadcastPartyUpdate(partyId);
         } else {
@@ -240,7 +240,7 @@ public class BmlPluginMessageListener implements PluginMessageListener {
             for (UUID memberUUID : partyManager.getPartyMembers(partyId)) {
                 Player p = Bukkit.getPlayer(memberUUID);
                 if (p != null && p.getName().equalsIgnoreCase(targetNick)) {
-                    partyManager.sendPacket(p, "bml:sync", json);
+                    partyManager.sendPacket(p, "betterlist:sync", json);
                     break;
                 }
             }
@@ -253,7 +253,7 @@ public class BmlPluginMessageListener implements PluginMessageListener {
                 for (UUID memberUUID : partyManager.getPartyMembers(partyId)) {
                     Player p = Bukkit.getPlayer(memberUUID);
                     if (p != null && p.getName().equalsIgnoreCase(targetNick)) {
-                        partyManager.sendPacket(p, "bml:sync", json);
+                        partyManager.sendPacket(p, "betterlist:sync", json);
                         break;
                     }
                 }
@@ -265,7 +265,7 @@ public class BmlPluginMessageListener implements PluginMessageListener {
             if (!memberUUID.equals(player.getUniqueId())) {
                 Player p = Bukkit.getPlayer(memberUUID);
                 if (p != null) {
-                    partyManager.sendPacket(p, "bml:sync", json);
+                    partyManager.sendPacket(p, "betterlist:sync", json);
                 }
             }
         }

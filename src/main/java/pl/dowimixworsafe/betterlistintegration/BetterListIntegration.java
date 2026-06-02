@@ -1,9 +1,9 @@
-package pl.dowimixworsafe.bmlintegration;
+package pl.dowimixworsafe.betterlistintegration;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class BMLIntegration extends JavaPlugin {
+public final class BetterListIntegration extends JavaPlugin {
 
     private PartyManager partyManager;
 
@@ -12,15 +12,15 @@ public final class BMLIntegration extends JavaPlugin {
         this.partyManager = new PartyManager(this);
 
         // Register the plugin messaging channels (outgoing/incoming).
-        getServer().getMessenger().registerOutgoingPluginChannel(this, "bml:sync");
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "betterlist:sync");
 
-        BmlPluginMessageListener messageListener = new BmlPluginMessageListener(partyManager, getLogger());
-        getServer().getMessenger().registerIncomingPluginChannel(this, "bml:sync", messageListener);
+        BetterListPluginMessageListener messageListener = new BetterListPluginMessageListener(partyManager, getLogger());
+        getServer().getMessenger().registerIncomingPluginChannel(this, "betterlist:sync", messageListener);
 
         // Register Bukkit event listeners.
         Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(partyManager), this);
 
-        getLogger().info("BML Integration enabled. Listening on the bml:sync channel.");
+        getLogger().info("Better List Integration enabled. Listening on the betterlist:sync channel.");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package pl.dowimixworsafe.bmlintegration;
+package pl.dowimixworsafe.betterlistintegration;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -128,7 +128,7 @@ public class PartyManager {
         }
         json.add("members", membersArray);
 
-        broadcastToParty(partyId, "bml:sync", json);
+        broadcastToParty(partyId, "betterlist:sync", json);
     }
 
     /** Tells all members the party was disbanded. */
@@ -136,7 +136,7 @@ public class PartyManager {
         JsonObject json = new JsonObject();
         json.addProperty("type", "PARTY_LEAVE");
         json.addProperty("partyId", partyId.toString());
-        broadcastToParty(partyId, "bml:sync", json);
+        broadcastToParty(partyId, "betterlist:sync", json);
     }
 
     /** Sends an error message to a specific player. */
@@ -145,7 +145,7 @@ public class PartyManager {
         JsonObject json = new JsonObject();
         json.addProperty("type", "PARTY_ERROR");
         json.addProperty("message", message);
-        sendPacket(player, "bml:sync", json);
+        sendPacket(player, "betterlist:sync", json);
     }
 
     /** Sends a single packet (server -> client) on the given channel. */

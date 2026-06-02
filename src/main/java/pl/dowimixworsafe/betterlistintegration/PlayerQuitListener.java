@@ -1,4 +1,4 @@
-package pl.dowimixworsafe.bmlintegration;
+package pl.dowimixworsafe.betterlistintegration;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

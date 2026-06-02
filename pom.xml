@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.dowimixworsafe</groupId>
-    <artifactId>bml-integration</artifactId>
-    <version>1.0.0</version>
+    <artifactId>betterlist-integration</artifactId>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
-    <name>bml-integration</name>
+    <name>betterlist-integration</name>
 
     <properties>
         <java.version>25</java.version>
