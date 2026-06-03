@@ -4,4 +4,4 @@ main: pl.dowimixworsafe.betterlistintegration.BetterListIntegration
 api-version: '26.1.2'
 author: Dowimixworsafe
 description: Server-side relay for the Better List for Litematica mod's party progress sync.
-website: https://github.com/Dowimixworsafe/Better-Material-List
+website: https://github.com/Dowimixworsafe/Better-List

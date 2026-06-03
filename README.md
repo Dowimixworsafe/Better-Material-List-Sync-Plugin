@@ -1,6 +1,6 @@
 # BetterList Integration
 
-Server-side companion plugin for the **[Better List for Litematica](https://github.com/Dowimixworsafe/Better-Material-List)** Fabric mod.
+Server-side companion plugin for the **[Better List for Litematica](https://github.com/Dowimixworsafe/Better-List)** Fabric mod.
 
 It enables the mod's **party progress sync** on Bukkit-family servers (Paper, Purpur, Spigot, …). It is a thin **relay**: it tracks party membership in memory and forwards the mod's `betterlist:sync` messages between party members. It never inspects or stores the synced build data.
 
